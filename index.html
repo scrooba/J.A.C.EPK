@@ -5,6 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>J.A.C | Electronic Press Kit</title>
     <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700&f[]=satoshi@400,500&display=swap" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
         :root {
             --bg: #0c0a1a;
@@ -71,6 +72,33 @@
             border: 1px solid var(--border);
         }
 
+        .social-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
         .album-grid { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
@@ -86,6 +114,18 @@
             border: 1px solid var(--border);
         }
 
+        .tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
         .track-list { list-style: none; padding: 0; }
         .track-item { 
             display: flex; 
@@ -94,7 +134,7 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .btn {
+        .btn-main {
             display: inline-block;
             background: var(--primary);
             color: white;
@@ -103,9 +143,7 @@
             text-decoration: none;
             font-weight: 700;
             margin-top: 2rem;
-            transition: transform 0.2s;
         }
-        .btn:hover { transform: translateY(-2px); }
 
         @media (max-width: 800px) {
             .hero, .grid, .album-grid { grid-template-columns: 1fr; }
@@ -119,7 +157,7 @@
     <header>
         <div class="logo">J.A.C</div>
         <nav>
-            <a href="mailto:justacomputeremail@gmail.com" style="color: var(--muted)">Contact & Booking</a>
+            <a href="mailto:justacomputeremail@gmail.com" style="color: var(--muted)">justacomputeremail@gmail.com</a>
         </nav>
     </header>
 
@@ -128,7 +166,12 @@
             <p class="kicker">Artist Profile</p>
             <h1>Funk house with a cosmic futuristic edge.</h1>
             <p style="color: var(--muted); font-size: 1.2rem;">Built for movement and rooted in rhythm, J.A.C blends late-night dance energy with a playful, spacey visual world.</p>
-            <a href="https://open.spotify.com/artist/5rRljvjEvIi91775WHlGKH" class="btn" target="_blank">Listen on Spotify</a>
+            
+            <div class="social-btns">
+                <a href="https://open.spotify.com/artist/5rRljvjEvIi91775WHlGKH" class="social-btn" target="_blank"><i class="ri-spotify-fill"></i> Spotify</a>
+                <a href="https://www.youtube.com/@J.A.C_Music" class="social-btn" target="_blank"><i class="ri-youtube-fill"></i> YouTube</a>
+                <a href="mailto:justacomputeremail@gmail.com" class="social-btn"><i class="ri-mail-fill"></i> Booking</a>
+            </div>
         </div>
         <img src="locked in album cover.jpg" alt="Locked in the Starship" class="main-cover">
     </section>
@@ -145,11 +188,12 @@
         </div>
         <div class="card">
             <p class="kicker">Live Stats</p>
-            <div style="display: flex; gap: 2rem; margin-top: 1rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
                 <div><h2 style="margin:0">86</h2><small>Monthly Listeners</small></div>
+                <div><h2 style="margin:0">1.2k+</h2><small>YouTube Subs</small></div>
                 <div><h2 style="margin:0">2</h2><small>Featured Albums</small></div>
             </div>
-            <p style="margin-top: 2rem; color: var(--muted)">For press, playlists, or booking, contact <strong>justacomputeremail@gmail.com</strong>.</p>
+            <p style="margin-top: 2rem; color: var(--muted)">Available for press, playlists, and worldwide booking.</p>
         </div>
     </div>
 
@@ -157,14 +201,16 @@
         <p class="kicker">Discography</p>
         <div class="album-grid">
             <div class="album-card">
-                <img src="planet 24.jpeg" alt="Planet 24">
-                <h3>Planet 24</h3>
-                <p style="color: var(--muted)">The debut introduction to the J.A.C cosmic universe.</p>
-            </div>
-            <div class="album-card">
+                <span class="tag">Newest Release</span>
                 <img src="locked in album cover.jpg" alt="Locked in the Starship">
                 <h3>Locked in the Starship</h3>
                 <p style="color: var(--muted)">A deeper dive into story-driven funk house energy.</p>
+            </div>
+            <div class="album-card">
+                <span class="tag" style="background: rgba(255,255,255,0.1); color: var(--muted);">Catalogue</span>
+                <img src="planet 24.jpeg" alt="Planet 24">
+                <h3>Planet 24</h3>
+                <p style="color: var(--muted)">The debut introduction to the J.A.C cosmic universe.</p>
             </div>
         </div>
     </section>
