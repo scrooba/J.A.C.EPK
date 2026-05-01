@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>J.A.C | Electronic Press Kit</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700&f[]=satoshi@400,500&display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+            --bg: #0c0a1a;
+            --surface: #171226;
+            --primary: #ef7d4d;
+            --text: #f7e9d8;
+            --muted: #ceb69b;
+            --border: rgba(243,211,177,0.12);
+            --radius: 1.5rem;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Satoshi', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container { width: min(1100px, 92%); margin: auto; }
+        
+        header { 
+            padding: 2rem 0; 
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-family: 'Cabinet Grotesk'; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+
+        .hero { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 4rem; 
+            padding: 5rem 0; 
+            align-items: center;
+        }
+
+        h1 { 
+            font-family: 'Cabinet Grotesk'; 
+            font-size: clamp(2.5rem, 5vw, 4rem); 
+            line-height: 1.1; 
+            margin-bottom: 1.5rem;
+        }
+
+        .kicker { color: var(--primary); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; }
+        
+        .main-cover {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: var(--radius);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            object-fit: cover;
+        }
+
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin: 4rem 0; }
+        
+        .card { 
+            background: var(--surface); 
+            padding: 2.5rem; 
+            border-radius: var(--radius); 
+            border: 1px solid var(--border);
+        }
+
+        .album-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .album-art { width: 100%; border-radius: 1rem; margin-bottom: 1rem; }
+
+        .track-list { list-style: none; padding: 0; }
+        .track-item { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 1rem 0; 
+            border-bottom: 1px solid var(--border);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 2rem;
+            transition: transform 0.2s;
+        }
+        .btn:hover { transform: translateY(-2px); }
+
+        @media (max-width: 800px) {
+            .hero, .grid, .album-grid { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo">J.A.C</div>
+        <nav>
+            <a href="mailto:booking@yourdomain.com" style="color: var(--muted)">Contact & Booking</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div>
+            <p class="kicker">Artist Profile</p>
+            <h1>Funk house with a cosmic futuristic edge.</h1>
+            <p style="color: var(--muted); font-size: 1.2rem;">Built for movement and rooted in rhythm, J.A.C blends late-night dance energy with a playful, spacey visual world.</p>
+            <a href="#" class="btn">Listen on Spotify</a>
+        </div>
+        <img src="locked in album cover.jpg" alt="Locked in the Starship" class="main-cover">
+    </section>
+
+    <div class="grid">
+        <div class="card">
+            <p class="kicker">The Sound</p>
+            <ul class="track-list">
+                <li class="track-item"><span>Pressure_on_me</span><span style="color: var(--primary)">High Energy</span></li>
+                <li class="track-item"><span>Locked_in_the_starship</span><span style="color: var(--primary)">Story Lead</span></li>
+                <li class="track-item"><span>Hold_the_knight</span><span style="color: var(--primary)">Groove</span></li>
+                <li class="track-item"><span>Moving_Different</span><span style="color: var(--primary)">Dance</span></li>
+            </ul>
+        </div>
+        <div class="card">
+            <p class="kicker">Quick Stats</p>
+            <div style="display: flex; gap: 2rem; margin-top: 1rem;">
+                <div><h2 style="margin:0">80</h2><small>Monthly Listeners</small></div>
+                <div><h2 style="margin:0">2</h2><small>Studio Albums</small></div>
+            </div>
+            <p style="margin-top: 2rem; color: var(--muted)">Available for press, playlists, and worldwide booking opportunities.</p>
+        </div>
+    </div>
+
+    <section style="margin-bottom: 5rem;">
+        <p class="kicker">Discography</p>
+        <div class="album-grid">
+            <div>
+                <img src="planet 24.jpeg" alt="Planet 24" class="album-art">
+                <h3>Planet 24</h3>
+                <p style="color: var(--muted)">The debut introduction to the J.A.C cosmic universe.</p>
+            </div>
+            <div>
+                <img src="locked in album cover.jpg" alt="Locked in the Starship" class="album-art">
+                <h3>Locked in the Starship</h3>
+                <p style="color: var(--muted)">A deeper dive into story-driven funk house energy.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding-bottom: 5rem; text-align: center; color: var(--faint); opacity: 0.5;">
+        <p>J.A.C / 2026 / COSMIC FUNK HOUSE</p>
+    </footer>
+</div>
+
+</body>
+</html>
