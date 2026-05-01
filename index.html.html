@@ -53,12 +53,14 @@
 
         .kicker { color: var(--primary); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; }
         
+        /* Updated for uniform sizing */
         .main-cover {
             width: 100%;
-            aspect-ratio: 1;
+            aspect-ratio: 1 / 1;
             border-radius: var(--radius);
             box-shadow: 0 30px 60px rgba(0,0,0,0.5);
             object-fit: cover;
+            border: 1px solid var(--border);
         }
 
         .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin: 4rem 0; }
@@ -70,8 +72,21 @@
             border: 1px solid var(--border);
         }
 
-        .album-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .album-art { width: 100%; border-radius: 1rem; margin-bottom: 1rem; }
+        /* Updated Grid for Uniform Album Art */
+        .album-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 2rem; 
+        }
+        
+        .album-card img { 
+            width: 100%; 
+            aspect-ratio: 1 / 1; 
+            object-fit: cover; 
+            border-radius: 1rem; 
+            margin-bottom: 1rem; 
+            border: 1px solid var(--border);
+        }
 
         .track-list { list-style: none; padding: 0; }
         .track-item { 
@@ -115,7 +130,7 @@
             <p class="kicker">Artist Profile</p>
             <h1>Funk house with a cosmic futuristic edge.</h1>
             <p style="color: var(--muted); font-size: 1.2rem;">Built for movement and rooted in rhythm, J.A.C blends late-night dance energy with a playful, spacey visual world.</p>
-            <a href="#" class="btn">Listen on Spotify</a>
+            <a href="https://open.spotify.com/artist/5rRljvjEvIi91775WHlGKH" class="btn" target="_blank">Listen on Spotify</a>
         </div>
         <img src="locked in album cover.jpg" alt="Locked in the Starship" class="main-cover">
     </section>
@@ -124,17 +139,17 @@
         <div class="card">
             <p class="kicker">The Sound</p>
             <ul class="track-list">
-                <li class="track-item"><span>Pressure_on_me</span><span style="color: var(--primary)">High Energy</span></li>
+                <li class="track-item"><span>Pressure_on_me</span><span style="color: var(--primary)">Energy & Lift</span></li>
                 <li class="track-item"><span>Locked_in_the_starship</span><span style="color: var(--primary)">Story Lead</span></li>
-                <li class="track-item"><span>Hold_the_knight</span><span style="color: var(--primary)">Groove</span></li>
-                <li class="track-item"><span>Moving_Different</span><span style="color: var(--primary)">Dance</span></li>
+                <li class="track-item"><span>Hold_the_knight</span><span style="color: var(--primary)">Groove First</span></li>
+                <li class="track-item"><span>Moving_Different</span><span style="color: var(--primary)">Pure Movement</span></li>
             </ul>
         </div>
         <div class="card">
-            <p class="kicker">Quick Stats</p>
+            <p class="kicker">Live Stats</p>
             <div style="display: flex; gap: 2rem; margin-top: 1rem;">
-                <div><h2 style="margin:0">80</h2><small>Monthly Listeners</small></div>
-                <div><h2 style="margin:0">2</h2><small>Studio Albums</small></div>
+                <div><h2 style="margin:0">86</h2><small>Monthly Listeners</small></div>
+                <div><h2 style="margin:0">2</h2><small>Featured Albums</small></div>
             </div>
             <p style="margin-top: 2rem; color: var(--muted)">Available for press, playlists, and worldwide booking opportunities.</p>
         </div>
@@ -143,13 +158,13 @@
     <section style="margin-bottom: 5rem;">
         <p class="kicker">Discography</p>
         <div class="album-grid">
-            <div>
-                <img src="planet 24.jpeg" alt="Planet 24" class="album-art">
+            <div class="album-card">
+                <img src="planet 24.jpeg" alt="Planet 24">
                 <h3>Planet 24</h3>
                 <p style="color: var(--muted)">The debut introduction to the J.A.C cosmic universe.</p>
             </div>
-            <div>
-                <img src="locked in album cover.jpg" alt="Locked in the Starship" class="album-art">
+            <div class="album-card">
+                <img src="locked in album cover.jpg" alt="Locked in the Starship">
                 <h3>Locked in the Starship</h3>
                 <p style="color: var(--muted)">A deeper dive into story-driven funk house energy.</p>
             </div>
