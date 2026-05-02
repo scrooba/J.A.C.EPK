@@ -10,7 +10,6 @@
         :root {
             --bg: #0c0a1a;
             --surface: #171226;
-            --surface2: #211836;
             --primary: #ef7d4d;
             --text: #f7e9d8;
             --muted: #ceb69b;
@@ -30,7 +29,7 @@
         .container { width: min(1100px, 92%); margin: auto; }
         
         header { 
-            padding: 1.5rem 0; 
+            padding: 2rem 0; 
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
@@ -44,15 +43,18 @@
 
         .logo { font-family: 'Cabinet Grotesk'; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
         
-        .nav-link { 
+        /* The New Navigation Button */
+        .nav-btn { 
             background: var(--primary); 
             color: white; 
-            padding: 0.6rem 1.2rem; 
+            padding: 0.7rem 1.4rem; 
             border-radius: 50px; 
             text-decoration: none; 
             font-weight: 700; 
             font-size: 0.85rem;
+            transition: transform 0.2s;
         }
+        .nav-btn:hover { transform: scale(1.05); }
 
         .hero { 
             display: grid; 
@@ -74,62 +76,65 @@
             border: 1px solid var(--border);
         }
 
-        /* Radio Hub Styles */
-        .panel { 
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin: 4rem 0; }
+        
+        .card { 
             background: var(--surface); 
-            padding: clamp(1.5rem, 5vw, 3rem); 
+            padding: 2.5rem; 
             border-radius: var(--radius); 
             border: 1px solid var(--border);
-            margin-bottom: 2rem;
+        }
+
+        /* Radio Hub Section Styling */
+        .radio-panel {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--primary); /* Highlighted border for importance */
+            margin-bottom: 4rem;
         }
 
         .track-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 0;
+            padding: 1.2rem 0;
             border-bottom: 1px solid var(--border);
-            gap: 1.5rem;
         }
         
-        .track-identity { display: flex; align-items: center; gap: 1.2rem; }
+        .track-info { display: flex; align-items: center; gap: 1rem; }
         
-        .inline-play-btn {
+        .inline-play {
             background: none;
             border: none;
-            padding: 0;
-            cursor: pointer;
             color: var(--primary);
-            font-size: 2.5rem;
+            font-size: 2.2rem;
+            cursor: pointer;
+            padding: 0;
             display: flex;
             align-items: center;
-            transition: transform 0.2s ease;
         }
-        .inline-play-btn:hover { transform: scale(1.1); }
-        
-        .track-title { font-family: 'Cabinet Grotesk'; font-size: 1.4rem; font-weight: 700; }
-        .focus-tag { background: var(--primary); color: white; font-size: 0.6rem; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase; margin-bottom: 0.4rem; display: inline-block; }
-        
-        .dl-group { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
-        .dl-btn {
-            background: var(--surface2);
+
+        .dl-btns { display: flex; gap: 0.5rem; }
+        .dl-link {
+            background: rgba(255,255,255,0.05);
             border: 1px solid var(--border);
             color: var(--text);
-            padding: 0.5rem 0.9rem;
-            border-radius: 8px;
-            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
             font-weight: 800;
             text-decoration: none;
-            transition: 0.2s;
         }
-        .dl-btn:hover { border-color: var(--primary); background: rgba(239, 125, 77, 0.1); }
+        .dl-link:hover { border-color: var(--primary); background: rgba(239, 125, 77, 0.1); }
 
-        .album-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+        .album-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         .album-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 1rem; border: 1px solid var(--border); margin-bottom: 1rem; }
+        .tag { background: var(--primary); color: white; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase; margin-bottom: 0.5rem; display: inline-block; }
 
         @media (max-width: 800px) {
-            .hero, .album-grid { grid-template-columns: 1fr; }
-            .track-row { flex-direction: column; align-items: flex-start; }
+            .hero, .grid, .album-grid { grid-template-columns: 1fr; }
+            .track-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
         }
     </style>
 </head>
@@ -139,7 +144,7 @@
     <header>
         <div class="logo">J.A.C</div>
         <nav>
-            <a href="#radio-hub" class="nav-link">Listen & Download</a>
+            <a href="#radio-hub" class="nav-btn">Listen & Download</a>
         </nav>
     </header>
 
@@ -147,8 +152,8 @@
         <div>
             <p class="kicker">Artist Profile</p>
             <h1>Funk house with a cosmic futuristic edge.</h1>
-            <p style="color: var(--muted); font-size: 1.1rem; max-width: 500px;">J.A.C is a retro-futuristic project blending funk-driven rhythm with an engineered cosmic identity. Direct from Ryan (Management).</p>
-            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <p style="color: var(--muted); font-size: 1.2rem;">Built for movement and rooted in rhythm, J.A.C blends late-night dance energy with a playful, spacey visual world.</p>
+            <div style="display: flex; gap: 1.5rem; margin-top: 2rem;">
                 <a href="https://www.youtube.com/@J.A.C_Music" style="color: var(--text); text-decoration: none;"><i class="ri-youtube-fill"></i> 1.2k Subs</a>
                 <a href="mailto:justacomputeremail@gmail.com" style="color: var(--text); text-decoration: none;"><i class="ri-mail-fill"></i> Contact Ryan</a>
             </div>
@@ -156,78 +161,75 @@
         <img src="locked in album cover.jpg" alt="Locked in the Starship" class="main-cover">
     </section>
 
-    <section class="panel" id="radio-hub">
-        <p class="kicker">Radio Transmission Hub</p>
-        <h2>Broadcast-Ready Transmissions</h2>
-        <p class="lead">Instant preview and one-click downloads. No gates.</p>
+    <section class="radio-panel" id="radio-hub">
+        <p class="kicker">Radio Hub</p>
+        <h2>Listen & Download</h2>
+        <p style="color: var(--muted); margin-bottom: 2rem;">Broadcast-ready files for airplay. One-click, no gates.</p>
 
-        <div style="margin-top: 2rem;">
-            <div class="track-row">
-                <div class="track-identity">
-                    <button class="inline-play-btn" onclick="togglePlay('audio-loop', this)">
-                        <i class="ri-play-circle-fill"></i>
-                    </button>
-                    <div>
-                        <span class="focus-tag">Focus Track</span>
-                        <div class="track-title">Loop_of_you</div>
-                        <audio id="audio-loop" src="assets/audio/J.A.C_Loop_of_you.mp3"></audio>
-                    </div>
-                </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--primary);">124 BPM | G Minor</div>
-                    <div class="dl-group">
-                        <a href="assets/audio/J.A.C_Loop_of_you_Clean.wav" download class="dl-btn">WAV</a>
-                        <a href="assets/audio/J.A.C_Loop_of_you_320.mp3" download class="dl-btn">MP3</a>
-                    </div>
+        <div class="track-row">
+            <div class="track-info">
+                <button class="inline-play" onclick="togglePlay('audio-loop', this)"><i class="ri-play-circle-fill"></i></button>
+                <div>
+                    <strong style="color: var(--primary); font-size: 0.6rem; display: block; text-transform: uppercase;">Focus Track</strong>
+                    <span style="font-family: 'Cabinet Grotesk'; font-size: 1.3rem; font-weight: 700;">Loop_of_you</span>
+                    <audio id="audio-loop" src="assets/audio/J.A.C_Loop_of_you.mp3"></audio>
                 </div>
             </div>
+            <div class="dl-btns">
+                <a href="assets/audio/J.A.C_Loop_of_you_Clean.wav" download class="dl-link">WAV</a>
+                <a href="assets/audio/J.A.C_Loop_of_you_320.mp3" download class="dl-link">MP3</a>
+            </div>
+        </div>
 
-            <div class="track-row">
-                <div class="track-identity">
-                    <button class="inline-play-btn" onclick="togglePlay('audio-pressure', this)">
-                        <i class="ri-play-circle-fill"></i>
-                    </button>
-                    <div>
-                        <div class="track-title" style="margin-top: 1rem;">Pressure_on_me</div>
-                        <audio id="audio-pressure" src="assets/audio/J.A.C_Pressure_on_me.mp3"></audio>
-                    </div>
+        <div class="track-row">
+            <div class="track-info">
+                <button class="inline-play" onclick="togglePlay('audio-pressure', this)"><i class="ri-play-circle-fill"></i></button>
+                <div>
+                    <span style="font-family: 'Cabinet Grotesk'; font-size: 1.3rem; font-weight: 700;">Pressure_on_me</span>
+                    <audio id="audio-pressure" src="assets/audio/J.A.C_Pressure_on_me.mp3"></audio>
                 </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--primary);">126 BPM | C Major</div>
-                    <div class="dl-group">
-                        <a href="assets/audio/J.A.C_Pressure_on_me_Clean.wav" download class="dl-btn">WAV</a>
-                        <a href="assets/audio/J.A.C_Pressure_on_me_320.mp3" download class="dl-btn">MP3</a>
-                    </div>
-                </div>
+            </div>
+            <div class="dl-btns">
+                <a href="assets/audio/J.A.C_Pressure_on_me_Clean.wav" download class="dl-link">WAV</a>
+                <a href="assets/audio/J.A.C_Pressure_on_me_320.mp3" download class="dl-link">MP3</a>
             </div>
         </div>
     </section>
 
-    <section class="panel">
-        <p class="kicker">The History</p>
-        <h2>Engineered Euphoria</h2>
-        <p style="font-size: 1.2rem; color: var(--text); margin-bottom: 2rem;">J.A.C. is a retro-futuristic blend of funk and electronic music heavily influenced by the precision and soul of Daft Punk.</p>
-        <p style="color: var(--muted);">Each track is a transmission drifting through space, pulling you deeper into a mechanical world where every system moves in unison. Controlled at its center by just a computer, the sound balances 1970s underground aesthetic with polished, late-night energy.</p>
-    </section>
+    <div class="grid">
+        <div class="card">
+            <p class="kicker">The Sound</p>
+            <p style="color: var(--muted)">J.A.C. is a retro-futuristic blend of funk and electronic music heavily influenced by the precision and soul of Daft Punk.</p>
+        </div>
+        <div class="card">
+            <p class="kicker">Live Stats</p>
+            <div style="display: flex; gap: 2rem; margin-top: 1rem;">
+                <div><h2 style="margin:0">86</h2><small>Monthly Listeners</small></div>
+                <div><h2 style="margin:0">1.2k+</h2><small>YouTube Subs</small></div>
+            </div>
+        </div>
+    </div>
 
     <section style="margin-bottom: 5rem;">
         <p class="kicker">Discography</p>
         <div class="album-grid">
-            <div>
+            <div class="album-card">
+                <span class="tag">Newest Release</span>
                 <img src="locked in album cover.jpg" alt="Locked in the Starship">
                 <h3>Locked in the Starship</h3>
-                <p style="color: var(--muted); font-size: 0.9rem;">Released April 22. Sound becomes survival inside a drifting vessel.</p>
+                <p style="color: var(--muted); font-size: 0.9rem;">Locked in the Starship picks up where Planet 24 leaves off, placing you inside a drifting vessel cut off from the system.</p>
             </div>
-            <div>
+            <div class="album-card">
+                <span class="tag" style="background: rgba(255,255,255,0.1); color: var(--muted);">Catalogue</span>
                 <img src="planet 24.jpeg" alt="Planet 24">
                 <h3>Planet 24</h3>
-                <p style="color: var(--muted); font-size: 0.9rem;">A mechanical world built on rhythm and engineered sync.</p>
+                <p style="color: var(--muted); font-size: 0.9rem;">Planet 24 is a mechanical world built on rhythm, where everything is in perfect sync and every system moves in unison.</p>
             </div>
         </div>
     </section>
 
-    <footer style="padding-bottom: 5rem; text-align: center; color: var(--muted); font-size: 0.8rem;">
-        J.A.C / MANAGEMENT: RYAN / 2026
+    <footer style="padding-bottom: 5rem; text-align: center; color: var(--muted); opacity: 0.5; font-size: 0.8rem;">
+        <p>J.A.C / 2026 / MANAGEMENT: RYAN</p>
     </footer>
 </div>
 
@@ -236,7 +238,7 @@
         const audio = document.getElementById(id);
         const icon = btn.querySelector('i');
         const allAudios = document.querySelectorAll('audio');
-        const allIcons = document.querySelectorAll('.inline-play-btn i');
+        const allIcons = document.querySelectorAll('.inline-play i');
 
         if (audio.paused) {
             allAudios.forEach(a => a.pause());
