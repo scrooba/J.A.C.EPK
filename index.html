@@ -1,106 +1,235 @@
-<section class="panel content" id="radio-hub">
-    <p class="kicker">Radio Transmission Hub</p>
-    <h2>Broadcast-Ready Downloads</h2>
-    <p class="lead">Select a track to preview. Download high-res files for immediate airplay.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>J.A.C | Electronic Press Kit</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700&f[]=satoshi@400,500&display=swap" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0c0a1a;
+            --surface: #171226;
+            --surface2: #211836;
+            --primary: #ef7d4d;
+            --text: #f7e9d8;
+            --muted: #ceb69b;
+            --border: rgba(243,211,177,0.12);
+            --radius: 1.5rem;
+        }
 
-    <div class="list" style="margin-top: 2rem;">
-        <div class="list-item track-row">
-            <div class="track-identity">
-                <button class="inline-play-btn" onclick="togglePlay('audio-loop', this)" aria-label="Preview Track">
-                    <i class="ri-play-circle-fill"></i>
-                </button>
-                <div class="track-info">
-                    <strong class="focus-label">Focus Track</strong>
-                    <span class="track-title">Loop_of_you</span>
-                    <audio id="audio-loop" src="assets/audio/J.A.C_Loop_of_you.mp3"></audio>
+        body {
+            margin: 0;
+            font-family: 'Satoshi', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container { width: min(1100px, 92%); margin: auto; }
+        
+        header { 
+            padding: 1.5rem 0; 
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: rgba(12, 10, 26, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .logo { font-family: 'Cabinet Grotesk'; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+        
+        .nav-link { 
+            background: var(--primary); 
+            color: white; 
+            padding: 0.6rem 1.2rem; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.85rem;
+        }
+
+        .hero { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 4rem; 
+            padding: 5rem 0; 
+            align-items: center;
+        }
+
+        h1 { font-family: 'Cabinet Grotesk'; font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; }
+        .kicker { color: var(--primary); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; }
+        
+        .main-cover {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: var(--radius);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            object-fit: cover;
+            border: 1px solid var(--border);
+        }
+
+        /* Radio Hub Styles */
+        .panel { 
+            background: var(--surface); 
+            padding: clamp(1.5rem, 5vw, 3rem); 
+            border-radius: var(--radius); 
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .track-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            gap: 1.5rem;
+        }
+        
+        .track-identity { display: flex; align-items: center; gap: 1.2rem; }
+        
+        .inline-play-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            color: var(--primary);
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s ease;
+        }
+        .inline-play-btn:hover { transform: scale(1.1); }
+        
+        .track-title { font-family: 'Cabinet Grotesk'; font-size: 1.4rem; font-weight: 700; }
+        .focus-tag { background: var(--primary); color: white; font-size: 0.6rem; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase; margin-bottom: 0.4rem; display: inline-block; }
+        
+        .dl-group { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+        .dl-btn {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.5rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .dl-btn:hover { border-color: var(--primary); background: rgba(239, 125, 77, 0.1); }
+
+        .album-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+        .album-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 1rem; border: 1px solid var(--border); margin-bottom: 1rem; }
+
+        @media (max-width: 800px) {
+            .hero, .album-grid { grid-template-columns: 1fr; }
+            .track-row { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo">J.A.C</div>
+        <nav>
+            <a href="#radio-hub" class="nav-link">Listen & Download</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div>
+            <p class="kicker">Artist Profile</p>
+            <h1>Funk house with a cosmic futuristic edge.</h1>
+            <p style="color: var(--muted); font-size: 1.1rem; max-width: 500px;">J.A.C is a retro-futuristic project blending funk-driven rhythm with an engineered cosmic identity. Direct from Ryan (Management).</p>
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <a href="https://www.youtube.com/@J.A.C_Music" style="color: var(--text); text-decoration: none;"><i class="ri-youtube-fill"></i> 1.2k Subs</a>
+                <a href="mailto:justacomputeremail@gmail.com" style="color: var(--text); text-decoration: none;"><i class="ri-mail-fill"></i> Contact Ryan</a>
+            </div>
+        </div>
+        <img src="locked in album cover.jpg" alt="Locked in the Starship" class="main-cover">
+    </section>
+
+    <section class="panel" id="radio-hub">
+        <p class="kicker">Radio Transmission Hub</p>
+        <h2>Broadcast-Ready Transmissions</h2>
+        <p class="lead">Instant preview and one-click downloads. No gates.</p>
+
+        <div style="margin-top: 2rem;">
+            <div class="track-row">
+                <div class="track-identity">
+                    <button class="inline-play-btn" onclick="togglePlay('audio-loop', this)">
+                        <i class="ri-play-circle-fill"></i>
+                    </button>
+                    <div>
+                        <span class="focus-tag">Focus Track</span>
+                        <div class="track-title">Loop_of_you</div>
+                        <audio id="audio-loop" src="assets/audio/J.A.C_Loop_of_you.mp3"></audio>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--primary);">124 BPM | G Minor</div>
+                    <div class="dl-group">
+                        <a href="assets/audio/J.A.C_Loop_of_you_Clean.wav" download class="dl-btn">WAV</a>
+                        <a href="assets/audio/J.A.C_Loop_of_you_320.mp3" download class="dl-btn">MP3</a>
+                    </div>
                 </div>
             </div>
-            <div class="track-actions">
-                <span class="track-meta">124 BPM | G Minor</span>
-                <div class="dl-group">
-                    <a href="assets/audio/J.A.C_Loop_of_you_Clean.wav" download class="dl-btn">.WAV</a>
-                    <a href="assets/audio/J.A.C_Loop_of_you_320.mp3" download class="dl-btn">.MP3</a>
+
+            <div class="track-row">
+                <div class="track-identity">
+                    <button class="inline-play-btn" onclick="togglePlay('audio-pressure', this)">
+                        <i class="ri-play-circle-fill"></i>
+                    </button>
+                    <div>
+                        <div class="track-title" style="margin-top: 1rem;">Pressure_on_me</div>
+                        <audio id="audio-pressure" src="assets/audio/J.A.C_Pressure_on_me.mp3"></audio>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--primary);">126 BPM | C Major</div>
+                    <div class="dl-group">
+                        <a href="assets/audio/J.A.C_Pressure_on_me_Clean.wav" download class="dl-btn">WAV</a>
+                        <a href="assets/audio/J.A.C_Pressure_on_me_320.mp3" download class="dl-btn">MP3</a>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="list-item track-row">
-            <div class="track-identity">
-                <button class="inline-play-btn" onclick="togglePlay('audio-pressure', this)" aria-label="Preview Track">
-                    <i class="ri-play-circle-fill"></i>
-                </button>
-                <div class="track-info">
-                    <strong>Set Opener</strong>
-                    <span class="track-title">Pressure_on_me</span>
-                    <audio id="audio-pressure" src="assets/audio/J.A.C_Pressure_on_me.mp3"></audio>
-                </div>
+    <section class="panel">
+        <p class="kicker">The History</p>
+        <h2>Engineered Euphoria</h2>
+        <p style="font-size: 1.2rem; color: var(--text); margin-bottom: 2rem;">J.A.C. is a retro-futuristic blend of funk and electronic music heavily influenced by the precision and soul of Daft Punk.</p>
+        <p style="color: var(--muted);">Each track is a transmission drifting through space, pulling you deeper into a mechanical world where every system moves in unison. Controlled at its center by just a computer, the sound balances 1970s underground aesthetic with polished, late-night energy.</p>
+    </section>
+
+    <section style="margin-bottom: 5rem;">
+        <p class="kicker">Discography</p>
+        <div class="album-grid">
+            <div>
+                <img src="locked in album cover.jpg" alt="Locked in the Starship">
+                <h3>Locked in the Starship</h3>
+                <p style="color: var(--muted); font-size: 0.9rem;">Released April 22. Sound becomes survival inside a drifting vessel.</p>
             </div>
-            <div class="track-actions">
-                <span class="track-meta">126 BPM | C Major</span>
-                <div class="dl-group">
-                    <a href="assets/audio/J.A.C_Pressure_on_me_Clean.wav" download class="dl-btn">.WAV</a>
-                    <a href="assets/audio/J.A.C_Pressure_on_me_320.mp3" download class="dl-btn">.MP3</a>
-                </div>
+            <div>
+                <img src="planet 24.jpeg" alt="Planet 24">
+                <h3>Planet 24</h3>
+                <p style="color: var(--muted); font-size: 0.9rem;">A mechanical world built on rhythm and engineered sync.</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<style>
-    /* Radio Hub UX Styles */
-    .track-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.25rem 0;
-        gap: 1.5rem;
-    }
-    
-    .track-identity { display: flex; align-items: center; gap: 1rem; }
-    
-    .inline-play-btn {
-        background: none;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        color: var(--primary);
-        font-size: 2.2rem;
-        display: flex;
-        align-items: center;
-        transition: transform 0.2s ease;
-    }
-    .inline-play-btn:hover { transform: scale(1.1); }
-    
-    .track-title {
-        font-family: var(--display);
-        font-size: 1.3rem;
-        font-weight: 700;
-        display: block;
-    }
-    
-    .focus-label { color: var(--primary); font-size: 0.7rem; letter-spacing: 0.1em; }
-    
-    .track-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; }
-    .track-meta { font-size: 0.75rem; color: var(--faint); font-weight: 700; }
-    
-    .dl-group { display: flex; gap: 0.5rem; }
-    .dl-btn {
-        background: var(--surface2);
-        border: 1px solid var(--border);
-        color: var(--text);
-        padding: 0.4rem 0.8rem;
-        border-radius: 6px;
-        font-size: 0.7rem;
-        font-weight: 800;
-        text-decoration: none;
-    }
-    .dl-btn:hover { border-color: var(--primary); background: rgba(239, 125, 77, 0.1); }
-
-    @media (max-width: 600px) {
-        .track-row { flex-direction: column; align-items: flex-start; }
-        .track-actions { align-items: flex-start; }
-    }
-</style>
+    <footer style="padding-bottom: 5rem; text-align: center; color: var(--muted); font-size: 0.8rem;">
+        J.A.C / MANAGEMENT: RYAN / 2026
+    </footer>
+</div>
 
 <script>
     function togglePlay(id, btn) {
@@ -110,10 +239,8 @@
         const allIcons = document.querySelectorAll('.inline-play-btn i');
 
         if (audio.paused) {
-            // Pause everything else
             allAudios.forEach(a => a.pause());
-            allIcons.forEach(i => { i.className = 'ri-play-circle-fill'; });
-            
+            allIcons.forEach(i => i.className = 'ri-play-circle-fill');
             audio.play();
             icon.className = 'ri-pause-circle-fill';
         } else {
@@ -122,3 +249,5 @@
         }
     }
 </script>
+</body>
+</html>
