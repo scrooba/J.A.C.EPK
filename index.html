@@ -119,10 +119,9 @@
             flex-shrink: 0;
         }
 
-        /* Scrubber Container - Hidden by default */
         .scrubber-container {
             flex-grow: 1;
-            display: none; /* Hidden until play is clicked */
+            display: none; 
             align-items: center;
             gap: 10px;
             animation: fadeIn 0.3s ease;
@@ -265,8 +264,8 @@
 
     <section class="radio-panel" id="radio-hub">
         <p class="kicker">Radio Hub</p>
-        <h2>Broadcast-Ready Files</h2>
-        <p style="color: var(--muted); margin-bottom: 2rem;">Preview tracks and download high-resolution audio for airplay.</p>
+        <h2>Listen</h2>
+        <p style="color: var(--muted); margin-bottom: 2rem;">Preview tracks and download audio for airplay.</p>
 
         <div class="track-row">
             <div class="track-info">
@@ -282,8 +281,7 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Loop_of_you_Clean.wav" download="J.A.C_Loop_of_you_Clean.wav" class="dl-link">WAV</a>
-                <a href="assets/audio/Loop_of_you.mp3" download="J.A.C_Loop_of_you.mp3" class="dl-link">MP3</a>
+                <a href="assets/audio/Loop_of_you.mp3" download="J.A.C_Loop_of_you.mp3" class="dl-link">Download MP3</a>
             </div>
         </div>
 
@@ -300,8 +298,7 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Pressure_on_me_Clean.wav" download="J.A.C_Pressure_on_me_Clean.wav" class="dl-link">WAV</a>
-                <a href="assets/audio/Pressure_on_me.mp3" download="J.A.C_Pressure_on_me.mp3" class="dl-link">MP3</a>
+                <a href="assets/audio/Pressure_on_me.mp3" download="J.A.C_Pressure_on_me.mp3" class="dl-link">Download MP3</a>
             </div>
         </div>
     </section>
@@ -317,10 +314,10 @@
             </ul>
         </div>
         <div class="card">
-            <p class="kicker">Live Stats</p>
+            <p class="kicker">Stats</p>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
                 <div><h2 style="margin:0">1.2k+</h2><small>YouTube Subs</small></div>
-                <div><h2 style="margin:0">86</h2><small>Monthly Listeners</small></div>
+                <div><h2 style="margin:0">125</h2><small>Monthly Listeners</small></div>
             </div>
             <p style="margin-top: 2rem; color: var(--muted)">Available for press, playlists, and worldwide booking at <strong>justacomputeremail@gmail.com</strong>.</p>
         </div>
@@ -360,19 +357,16 @@
         const allContainers = document.querySelectorAll('.scrubber-container');
 
         if (audio.paused) {
-            // Reset everything else
             allAudios.forEach(a => a.pause());
             allIcons.forEach(i => i.className = 'ri-play-circle-fill');
             allContainers.forEach(c => c.style.display = 'none');
             
-            // Play this one and show scrubber
             audio.play();
             icon.className = 'ri-pause-circle-fill';
             container.style.display = 'flex';
         } else {
             audio.pause();
             icon.className = 'ri-play-circle-fill';
-            // We keep the scrubber visible while paused for better UX
         }
     }
 
