@@ -82,27 +82,35 @@
         .social-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             background: rgba(255,255,255,0.05);
             border: 1px solid var(--border);
             color: var(--text);
-            padding: 0.8rem 1.2rem;
-            border-radius: 50px;
+            padding: 0.8rem 1.4rem;
+            border-radius: 12px; /* Square-ish 'App' look */
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 700;
+            font-size: 0.9rem;
             transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
+
+        .social-btn i { font-size: 1.2rem; color: var(--primary); }
 
         .social-btn:hover {
             background: var(--primary);
             border-color: var(--primary);
+            color: white;
             transform: translateY(-2px);
         }
+
+        .social-btn:hover i { color: white; }
 
         .album-grid { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
-            gap: 2rem; 
+            gap: 3rem; 
         }
         
         .album-card img { 
@@ -110,7 +118,7 @@
             aspect-ratio: 1 / 1; 
             object-fit: cover; 
             border-radius: 1rem; 
-            margin-bottom: 1rem; 
+            margin-bottom: 1.5rem; 
             border: 1px solid var(--border);
         }
 
@@ -123,7 +131,7 @@
             padding: 0.2rem 0.6rem;
             border-radius: 4px;
             text-transform: uppercase;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .track-list { list-style: none; padding: 0; }
@@ -132,17 +140,6 @@
             justify-content: space-between; 
             padding: 1rem 0; 
             border-bottom: 1px solid var(--border);
-        }
-
-        .btn-main {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 2rem;
         }
 
         @media (max-width: 800px) {
@@ -157,7 +154,7 @@
     <header>
         <div class="logo">J.A.C</div>
         <nav>
-            <a href="mailto:justacomputeremail@gmail.com" style="color: var(--muted)">justacomputeremail@gmail.com</a>
+            <a href="mailto:justacomputeremail@gmail.com" style="color: var(--muted); font-size: 0.9rem;">justacomputeremail@gmail.com</a>
         </nav>
     </header>
 
@@ -165,7 +162,7 @@
         <div>
             <p class="kicker">Artist Profile</p>
             <h1>Funk house with a cosmic futuristic edge.</h1>
-            <p style="color: var(--muted); font-size: 1.2rem;">Built for movement and rooted in rhythm, J.A.C blends late-night dance energy with a playful, spacey visual world.</p>
+            <p style="color: var(--muted); font-size: 1.2rem;">J.A.C is a funk house project built around groove, movement, and an engineered cosmic identity.</p>
             
             <div class="social-btns">
                 <a href="https://open.spotify.com/artist/5rRljvjEvIi91775WHlGKH" class="social-btn" target="_blank"><i class="ri-spotify-fill"></i> Spotify</a>
@@ -178,7 +175,7 @@
 
     <div class="grid">
         <div class="card">
-            <p class="kicker">The Sound</p>
+            <p class="kicker">The Transmission</p>
             <ul class="track-list">
                 <li class="track-item"><span>Pressure_on_me</span><span style="color: var(--primary)">Energy & Lift</span></li>
                 <li class="track-item"><span>Locked_in_the_starship</span><span style="color: var(--primary)">Story Lead</span></li>
@@ -189,11 +186,10 @@
         <div class="card">
             <p class="kicker">Live Stats</p>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
-                <div><h2 style="margin:0">86</h2><small>Monthly Listeners</small></div>
                 <div><h2 style="margin:0">1.2k+</h2><small>YouTube Subs</small></div>
-                <div><h2 style="margin:0">2</h2><small>Featured Albums</small></div>
+                <div><h2 style="margin:0">86</h2><small>Monthly Listeners</small></div>
             </div>
-            <p style="margin-top: 2rem; color: var(--muted)">Available for press, playlists, and worldwide booking.</p>
+            <p style="margin-top: 2rem; color: var(--muted)">Available for press, playlists, and worldwide booking at <strong>justacomputeremail@gmail.com</strong>.</p>
         </div>
     </div>
 
@@ -204,13 +200,13 @@
                 <span class="tag">Newest Release</span>
                 <img src="locked in album cover.jpg" alt="Locked in the Starship">
                 <h3>Locked in the Starship</h3>
-                <p style="color: var(--muted)">A deeper dive into story-driven funk house energy.</p>
+                <p style="color: var(--muted); font-size: 0.95rem;">Locked in the Starship picks up where Planet 24 leaves off, placing you inside a drifting vessel cut off from the system. Time slows, loops repeat, and movement becomes the only constant. Pressure builds, escape disappears, and the line between control and freedom begins to blur. Each track is a transmission from inside the ship, where sound becomes survival and there’s no way out but to keep moving.</p>
             </div>
             <div class="album-card">
                 <span class="tag" style="background: rgba(255,255,255,0.1); color: var(--muted);">Catalogue</span>
                 <img src="planet 24.jpeg" alt="Planet 24">
                 <h3>Planet 24</h3>
-                <p style="color: var(--muted)">The debut introduction to the J.A.C cosmic universe.</p>
+                <p style="color: var(--muted); font-size: 0.95rem;">Planet 24 is a mechanical world built on rhythm, where everything is in perfect sync and every system moves in unison. It runs on engineered euphoria, controlled at its center by just a computer. Each track is a transmission, signals drifting through space and pulling you deeper until you’re part of the system, left questioning what’s real.</p>
             </div>
         </div>
     </section>
