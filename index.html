@@ -119,11 +119,18 @@
             flex-shrink: 0;
         }
 
+        /* Scrubber Container - Hidden by default */
         .scrubber-container {
             flex-grow: 1;
-            display: flex;
+            display: none; /* Hidden until play is clicked */
             align-items: center;
             gap: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-5px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         input[type="range"] {
@@ -259,17 +266,17 @@
     <section class="radio-panel" id="radio-hub">
         <p class="kicker">Radio Hub</p>
         <h2>Broadcast-Ready Files</h2>
-        <p style="color: var(--muted); margin-bottom: 2rem;">Preview tracks and download high-resolution audio for airplay. One-click, no gates.</p>
+        <p style="color: var(--muted); margin-bottom: 2rem;">Preview tracks and download high-resolution audio for airplay.</p>
 
         <div class="track-row">
             <div class="track-info">
-                <button class="inline-play" onclick="togglePlay('audio-loop', this)"><i class="ri-play-circle-fill"></i></button>
+                <button class="inline-play" onclick="togglePlay('audio-loop', this, 'scrub-container-loop')"><i class="ri-play-circle-fill"></i></button>
                 <div style="min-width: 120px;">
                     <strong style="color: var(--primary); font-size: 0.6rem; display: block; text-transform: uppercase;">Focus Track</strong>
                     <span style="font-family: 'Cabinet Grotesk'; font-size: 1.1rem; font-weight: 700;">Loop_of_you</span>
                     <audio id="audio-loop" src="assets/audio/Loop_of_you.mp3" ontimeupdate="updateScrubber('audio-loop', 'scrub-loop', 'time-loop')"></audio>
                 </div>
-                <div class="scrubber-container">
+                <div class="scrubber-container" id="scrub-container-loop">
                     <input type="range" id="scrub-loop" value="0" step="0.1" onchange="seekAudio('audio-loop', this.value)">
                     <span class="time-display" id="time-loop">0:00</span>
                 </div>
@@ -282,12 +289,12 @@
 
         <div class="track-row">
             <div class="track-info">
-                <button class="inline-play" onclick="togglePlay('audio-pressure', this)"><i class="ri-play-circle-fill"></i></button>
+                <button class="inline-play" onclick="togglePlay('audio-pressure', this, 'scrub-container-pressure')"><i class="ri-play-circle-fill"></i></button>
                 <div style="min-width: 120px;">
                     <span style="font-family: 'Cabinet Grotesk'; font-size: 1.1rem; font-weight: 700;">Pressure_on_me</span>
                     <audio id="audio-pressure" src="assets/audio/Pressure_on_me.mp3" ontimeupdate="updateScrubber('audio-pressure', 'scrub-pressure', 'time-pressure')"></audio>
                 </div>
-                <div class="scrubber-container">
+                <div class="scrubber-container" id="scrub-container-pressure">
                     <input type="range" id="scrub-pressure" value="0" step="0.1" onchange="seekAudio('audio-pressure', this.value)">
                     <span class="time-display" id="time-pressure">0:00</span>
                 </div>
@@ -343,20 +350,29 @@
 </div>
 
 <script>
-    function togglePlay(id, btn) {
+    function togglePlay(id, btn, containerId) {
         const audio = document.getElementById(id);
         const icon = btn.querySelector('i');
+        const container = document.getElementById(containerId);
+        
         const allAudios = document.querySelectorAll('audio');
         const allIcons = document.querySelectorAll('.inline-play i');
+        const allContainers = document.querySelectorAll('.scrubber-container');
 
         if (audio.paused) {
+            // Reset everything else
             allAudios.forEach(a => a.pause());
             allIcons.forEach(i => i.className = 'ri-play-circle-fill');
+            allContainers.forEach(c => c.style.display = 'none');
+            
+            // Play this one and show scrubber
             audio.play();
             icon.className = 'ri-pause-circle-fill';
+            container.style.display = 'flex';
         } else {
             audio.pause();
             icon.className = 'ri-play-circle-fill';
+            // We keep the scrubber visible while paused for better UX
         }
     }
 
