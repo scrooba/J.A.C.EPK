@@ -229,14 +229,6 @@
             margin-bottom: 0.8rem;
         }
 
-        .track-list { list-style: none; padding: 0; }
-        .track-item { 
-            display: flex; 
-            justify-content: space-between; 
-            padding: 1rem 0; 
-            border-bottom: 1px solid var(--border);
-        }
-
         @media (max-width: 800px) {
             .hero, .grid, .album-grid { grid-template-columns: 1fr; }
             header { flex-direction: column; gap: 1rem; text-align: center; }
@@ -283,7 +275,7 @@
                 <div style="min-width: 120px;">
                     <strong style="color: var(--primary); font-size: 0.6rem; display: block; text-transform: uppercase;">Focus Track</strong>
                     <span style="font-family: 'Cabinet Grotesk'; font-size: 1.1rem; font-weight: 700;">Loop_of_you</span>
-                    <audio id="audio-loop" src="assets/audio/Loop_of_you.wav" ontimeupdate="updateScrubber('audio-loop', 'scrub-loop', 'time-loop')"></audio>
+                    <audio id="audio-loop" src="assets/audio/Loop_of_you.mp3" ontimeupdate="updateScrubber('audio-loop', 'scrub-loop', 'time-loop')"></audio>
                 </div>
                 <div class="scrubber-container" id="scrub-container-loop">
                     <input type="range" id="scrub-loop" value="0" step="0.1" onchange="seekAudio('audio-loop', this.value)">
@@ -291,8 +283,8 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Loop_of_you.wav" download="J.A.C_Loop_of_you.wav" class="dl-link">WAV</a>
-                <a href="assets/audio/Loop_of_you.mp3" download="J.A.C_Loop_of_you.mp3" class="dl-link">MP3</a>
+                <a href="assets/audio/Loop_of_you.wav" download="Loop_of_you.wav" class="dl-link">WAV</a>
+                <a href="assets/audio/Loop_of_you.mp3" download="Loop_of_you.mp3" class="dl-link">MP3</a>
             </div>
         </div>
 
@@ -302,7 +294,7 @@
                 <img src="locked in album cover.jpg" class="track-thumb" alt="Album Cover">
                 <div style="min-width: 120px;">
                     <span style="font-family: 'Cabinet Grotesk'; font-size: 1.1rem; font-weight: 700;">Pressure_on_me</span>
-                    <audio id="audio-pressure" src="assets/audio/Pressure_on_me.wav" ontimeupdate="updateScrubber('audio-pressure', 'scrub-pressure', 'time-pressure')"></audio>
+                    <audio id="audio-pressure" src="assets/audio/Pressure_on_me.mp3" ontimeupdate="updateScrubber('audio-pressure', 'scrub-pressure', 'time-pressure')"></audio>
                 </div>
                 <div class="scrubber-container" id="scrub-container-pressure">
                     <input type="range" id="scrub-pressure" value="0" step="0.1" onchange="seekAudio('audio-pressure', this.value)">
@@ -310,8 +302,7 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Pressure_on_me.wav" download="J.A.C_Pressure_on_me.wav" class="dl-link">WAV</a>
-                <a href="assets/audio/Pressure_on_me.mp3" download="J.A.C_Pressure_on_me.mp3" class="dl-link">MP3</a>
+                <a href="assets/audio/Pressure_on_me.mp3" download="Pressure_on_me.mp3" class="dl-link">MP3</a>
             </div>
         </div>
 
@@ -321,7 +312,7 @@
                 <img src="locked in album cover.jpg" class="track-thumb" alt="Album Cover">
                 <div style="min-width: 120px;">
                     <span style="font-family: 'Cabinet Grotesk'; font-size: 1.1rem; font-weight: 700;">Moving_different</span>
-                    <audio id="audio-moving" src="assets/audio/Moving_different.wav" ontimeupdate="updateScrubber('audio-moving', 'scrub-moving', 'time-moving')"></audio>
+                    <audio id="audio-moving" src="assets/audio/Moving_different.mp3" ontimeupdate="updateScrubber('audio-moving', 'scrub-moving', 'time-moving')"></audio>
                 </div>
                 <div class="scrubber-container" id="scrub-container-moving">
                     <input type="range" id="scrub-moving" value="0" step="0.1" onchange="seekAudio('audio-moving', this.value)">
@@ -329,7 +320,7 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Moving_different.wav" download="J.A.C_Moving_different.wav" class="dl-link">WAV</a>
+                <a href="assets/audio/Moving_different.mp3" download="Moving_different.mp3" class="dl-link">MP3</a>
             </div>
         </div>
 
@@ -343,11 +334,12 @@
                 </div>
                 <div class="scrubber-container" id="scrub-container-knight">
                     <input type="range" id="scrub-knight" value="0" step="0.1" onchange="seekAudio('audio-knight', this.value)">
-                    <span class="time-display" id="time-pressure">0:00</span>
+                    <span class="time-display" id="time-knight">0:00</span>
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Hold_the_knight.mp3" download="J.A.C_Hold_the_knight.mp3" class="dl-link">MP3</a>
+                <a href="assets/audio/Hold_the_knight.wav" download="Hold_the_knight.wav" class="dl-link">WAV</a>
+                <a href="assets/audio/Hold_the_knight.mp3" download="Hold_the_knight.mp3" class="dl-link">MP3</a>
             </div>
         </div>
     </section>
@@ -355,12 +347,7 @@
     <div class="grid">
         <div class="card">
             <p class="kicker">The Transmission</p>
-            <ul class="track-list">
-                <li class="track-item"><span>Pressure_on_me</span><span style="color: var(--primary)">Energy & Lift</span></li>
-                <li class="track-item"><span>Locked_in_the_starship</span><span style="color: var(--primary)">Story Lead</span></li>
-                <li class="track-item"><span>Hold_the_knight</span><span style="color: var(--primary)">Groove First</span></li>
-                <li class="track-item"><span>Moving_Different</span><span style="color: var(--primary)">Pure Movement</span></li>
-            </ul>
+            <p style="color: var(--muted); font-size: 0.95rem;">Retro-futuristic funk designed for late-night movement. Engineered cosmic soul with a mechanical heartbeat.</p>
         </div>
         <div class="card">
             <p class="kicker">Stats</p>
@@ -379,13 +366,13 @@
                 <span class="tag">Newest Release</span>
                 <img src="locked in album cover.jpg" alt="Locked in the Starship">
                 <h3>Locked in the Starship</h3>
-                <p style="color: var(--muted); font-size: 0.95rem;">Locked in the Starship picks up where Planet 24 leaves off, placing you inside a drifting vessel cut off from the system. Time slows, loops repeat, and movement becomes the only constant. Pressure builds, escape disappears, and the line between control and freedom begins to blur. Each track is a transmission from inside the ship, where sound becomes survival and there’s no way out but to keep moving.</p>
+                <p style="color: var(--muted); font-size: 0.95rem;">Locked in the Starship picks up where Planet 24 leaves off, placing you inside a drifting vessel cut off from the system. Time slows, loops repeat, and movement becomes the only constant.</p>
             </div>
             <div class="album-card">
                 <span class="tag" style="background: rgba(255,255,255,0.1); color: var(--muted);">Catalogue</span>
                 <img src="planet 24.jpeg" alt="Planet 24">
                 <h3>Planet 24</h3>
-                <p style="color: var(--muted); font-size: 0.95rem;">Planet 24 is a mechanical world built on rhythm, where everything is in perfect sync and every system moves in unison. It runs on engineered euphoria, controlled at its center by just a computer. Each track is a transmission, signals drifting through space and pulling you deeper until you’re part of the system, left questioning what’s real.</p>
+                <p style="color: var(--muted); font-size: 0.95rem;">Planet 24 is a mechanical world built on rhythm, where everything is in perfect sync and every system moves in unison.</p>
             </div>
         </div>
     </section>
