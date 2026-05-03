@@ -6,10 +6,6 @@
     <title>J.A.C | Electronic Press Kit</title>
     <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700&f[]=satoshi@400,500&display=swap" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
     <style>
         :root {
             --bg: #0c0a1a;
@@ -278,7 +274,7 @@
     <section class="radio-panel" id="radio-hub">
         <p class="kicker">Radio Hub</p>
         <h2>Listen</h2>
-        <p style="color: var(--muted); margin-bottom: 2rem;">Preview tracks and download high-quality audio for airplay.</p>
+        <p style="color: var(--muted); margin-bottom: 2rem;">Preview tracks and download audio for airplay.</p>
 
         <div class="track-row">
             <div class="track-info">
@@ -295,7 +291,8 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Loop_of_you.wav" download="J.A.C_Loop_of_you.wav" class="dl-link">Download WAV</a>
+                <a href="assets/audio/Loop_of_you.wav" download="J.A.C_Loop_of_you.wav" class="dl-link">WAV</a>
+                <a href="assets/audio/Loop_of_you.mp3" download="J.A.C_Loop_of_you.mp3" class="dl-link">MP3</a>
             </div>
         </div>
 
@@ -313,7 +310,8 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Pressure_on_me.wav" download="J.A.C_Pressure_on_me.wav" class="dl-link">Download WAV</a>
+                <a href="assets/audio/Pressure_on_me.wav" download="J.A.C_Pressure_on_me.wav" class="dl-link">WAV</a>
+                <a href="assets/audio/Pressure_on_me.mp3" download="J.A.C_Pressure_on_me.mp3" class="dl-link">MP3</a>
             </div>
         </div>
 
@@ -331,7 +329,7 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Moving_different.wav" download="J.A.C_Moving_different.wav" class="dl-link">Download WAV</a>
+                <a href="assets/audio/Moving_different.wav" download="J.A.C_Moving_different.wav" class="dl-link">WAV</a>
             </div>
         </div>
 
@@ -341,15 +339,15 @@
                 <img src="locked in album cover.jpg" class="track-thumb" alt="Album Cover">
                 <div style="min-width: 120px;">
                     <span style="font-family: 'Cabinet Grotesk'; font-size: 1.1rem; font-weight: 700;">Hold_the_knight</span>
-                    <audio id="audio-knight" src="assets/audio/Hold_the_knight.wav" ontimeupdate="updateScrubber('audio-knight', 'scrub-knight', 'time-knight')"></audio>
+                    <audio id="audio-knight" src="assets/audio/Hold_the_knight.mp3" ontimeupdate="updateScrubber('audio-knight', 'scrub-knight', 'time-knight')"></audio>
                 </div>
                 <div class="scrubber-container" id="scrub-container-knight">
                     <input type="range" id="scrub-knight" value="0" step="0.1" onchange="seekAudio('audio-knight', this.value)">
-                    <span class="time-display" id="time-knight">0:00</span>
+                    <span class="time-display" id="time-pressure">0:00</span>
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Hold_the_knight.wav" download="J.A.C_Hold_the_knight.wav" class="dl-link">Download WAV</a>
+                <a href="assets/audio/Hold_the_knight.mp3" download="J.A.C_Hold_the_knight.mp3" class="dl-link">MP3</a>
             </div>
         </div>
     </section>
