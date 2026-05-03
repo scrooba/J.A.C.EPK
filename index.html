@@ -105,8 +105,16 @@
             gap: 2rem;
         }
         
-        .track-info { display: flex; align-items: center; gap: 1rem; flex-grow: 1; }
+        .track-info { display: flex; align-items: center; gap: 1.5rem; flex-grow: 1; }
         
+        .track-thumb {
+            width: 50px;
+            height: 50px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+        }
+
         .inline-play {
             background: none;
             border: none;
@@ -234,6 +242,7 @@
             header { flex-direction: column; gap: 1rem; text-align: center; }
             .track-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
             .scrubber-container { width: 100%; }
+            .track-thumb { display: none; }
         }
     </style>
 </head>
@@ -265,15 +274,16 @@
     <section class="radio-panel" id="radio-hub">
         <p class="kicker">Radio Hub</p>
         <h2>Listen</h2>
-        <p style="color: var(--muted); margin-bottom: 2rem;">Preview tracks and download audio for airplay.</p>
+        <p style="color: var(--muted); margin-bottom: 2rem;">Preview tracks and download high-quality audio for airplay.</p>
 
         <div class="track-row">
             <div class="track-info">
                 <button class="inline-play" onclick="togglePlay('audio-loop', this, 'scrub-container-loop')"><i class="ri-play-circle-fill"></i></button>
+                <img src="locked in album cover.jpg" class="track-thumb" alt="Album Cover">
                 <div style="min-width: 120px;">
                     <strong style="color: var(--primary); font-size: 0.6rem; display: block; text-transform: uppercase;">Focus Track</strong>
                     <span style="font-family: 'Cabinet Grotesk'; font-size: 1.1rem; font-weight: 700;">Loop_of_you</span>
-                    <audio id="audio-loop" src="assets/audio/Loop_of_you.mp3" ontimeupdate="updateScrubber('audio-loop', 'scrub-loop', 'time-loop')"></audio>
+                    <audio id="audio-loop" src="assets/audio/Loop_of_you.wav" ontimeupdate="updateScrubber('audio-loop', 'scrub-loop', 'time-loop')"></audio>
                 </div>
                 <div class="scrubber-container" id="scrub-container-loop">
                     <input type="range" id="scrub-loop" value="0" step="0.1" onchange="seekAudio('audio-loop', this.value)">
@@ -281,16 +291,17 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Loop_of_you.mp3" download="J.A.C_Loop_of_you.mp3" class="dl-link">Download MP3</a>
+                <a href="assets/audio/Loop_of_you.wav" download="J.A.C_Loop_of_you.wav" class="dl-link">Download WAV</a>
             </div>
         </div>
 
         <div class="track-row">
             <div class="track-info">
                 <button class="inline-play" onclick="togglePlay('audio-pressure', this, 'scrub-container-pressure')"><i class="ri-play-circle-fill"></i></button>
+                <img src="locked in album cover.jpg" class="track-thumb" alt="Album Cover">
                 <div style="min-width: 120px;">
                     <span style="font-family: 'Cabinet Grotesk'; font-size: 1.1rem; font-weight: 700;">Pressure_on_me</span>
-                    <audio id="audio-pressure" src="assets/audio/Pressure_on_me.mp3" ontimeupdate="updateScrubber('audio-pressure', 'scrub-pressure', 'time-pressure')"></audio>
+                    <audio id="audio-pressure" src="assets/audio/Pressure_on_me.wav" ontimeupdate="updateScrubber('audio-pressure', 'scrub-pressure', 'time-pressure')"></audio>
                 </div>
                 <div class="scrubber-container" id="scrub-container-pressure">
                     <input type="range" id="scrub-pressure" value="0" step="0.1" onchange="seekAudio('audio-pressure', this.value)">
@@ -298,7 +309,43 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Pressure_on_me.mp3" download="J.A.C_Pressure_on_me.mp3" class="dl-link">Download MP3</a>
+                <a href="assets/audio/Pressure_on_me.wav" download="J.A.C_Pressure_on_me.wav" class="dl-link">Download WAV</a>
+            </div>
+        </div>
+
+        <div class="track-row">
+            <div class="track-info">
+                <button class="inline-play" onclick="togglePlay('audio-moving', this, 'scrub-container-moving')"><i class="ri-play-circle-fill"></i></button>
+                <img src="locked in album cover.jpg" class="track-thumb" alt="Album Cover">
+                <div style="min-width: 120px;">
+                    <span style="font-family: 'Cabinet Grotesk'; font-size: 1.1rem; font-weight: 700;">Moving_different</span>
+                    <audio id="audio-moving" src="assets/audio/Moving_different.wav" ontimeupdate="updateScrubber('audio-moving', 'scrub-moving', 'time-moving')"></audio>
+                </div>
+                <div class="scrubber-container" id="scrub-container-moving">
+                    <input type="range" id="scrub-moving" value="0" step="0.1" onchange="seekAudio('audio-moving', this.value)">
+                    <span class="time-display" id="time-moving">0:00</span>
+                </div>
+            </div>
+            <div class="dl-btns">
+                <a href="assets/audio/Moving_different.wav" download="J.A.C_Moving_different.wav" class="dl-link">Download WAV</a>
+            </div>
+        </div>
+
+        <div class="track-row">
+            <div class="track-info">
+                <button class="inline-play" onclick="togglePlay('audio-knight', this, 'scrub-container-knight')"><i class="ri-play-circle-fill"></i></button>
+                <img src="locked in album cover.jpg" class="track-thumb" alt="Album Cover">
+                <div style="min-width: 120px;">
+                    <span style="font-family: 'Cabinet Grotesk'; font-size: 1.1rem; font-weight: 700;">Hold_the_knight</span>
+                    <audio id="audio-knight" src="assets/audio/Hold_the_knight.wav" ontimeupdate="updateScrubber('audio-knight', 'scrub-knight', 'time-knight')"></audio>
+                </div>
+                <div class="scrubber-container" id="scrub-container-knight">
+                    <input type="range" id="scrub-knight" value="0" step="0.1" onchange="seekAudio('audio-knight', this.value)">
+                    <span class="time-display" id="time-knight">0:00</span>
+                </div>
+            </div>
+            <div class="dl-btns">
+                <a href="assets/audio/Hold_the_knight.wav" download="J.A.C_Hold_the_knight.wav" class="dl-link">Download WAV</a>
             </div>
         </div>
     </section>
