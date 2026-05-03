@@ -6,6 +6,9 @@
     <title>J.A.C | Electronic Press Kit</title>
     <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700&f[]=satoshi@400,500&display=swap" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <script defer src="/_vercel/insights/script.js"></script>
+
     <style>
         :root {
             --bg: #0c0a1a;
@@ -283,8 +286,8 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Loop_of_you.wav" download="Loop_of_you.wav" class="dl-link">WAV</a>
-                <a href="assets/audio/Loop_of_you.mp3" download="Loop_of_you.mp3" class="dl-link">MP3</a>
+                <a href="assets/audio/Loop_of_you.wav" download="Loop_of_you.wav" class="dl-link" onclick="trackDownload('Loop_of_you', 'WAV')">WAV</a>
+                <a href="assets/audio/Loop_of_you.mp3" download="Loop_of_you.mp3" class="dl-link" onclick="trackDownload('Loop_of_you', 'MP3')">MP3</a>
             </div>
         </div>
 
@@ -302,7 +305,7 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Pressure_on_me.mp3" download="Pressure_on_me.mp3" class="dl-link">MP3</a>
+                <a href="assets/audio/Pressure_on_me.mp3" download="Pressure_on_me.mp3" class="dl-link" onclick="trackDownload('Pressure_on_me', 'MP3')">MP3</a>
             </div>
         </div>
 
@@ -320,7 +323,7 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Moving_different.mp3" download="Moving_different.mp3" class="dl-link">MP3</a>
+                <a href="assets/audio/Moving_different.mp3" download="Moving_different.mp3" class="dl-link" onclick="trackDownload('Moving_different', 'MP3')">MP3</a>
             </div>
         </div>
 
@@ -338,8 +341,8 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Hold_the_knight.wav" download="Hold_the_knight.wav" class="dl-link">WAV</a>
-                <a href="assets/audio/Hold_the_knight.mp3" download="Hold_the_knight.mp3" class="dl-link">MP3</a>
+                <a href="assets/audio/Hold_the_knight.wav" download="Hold_the_knight.wav" class="dl-link" onclick="trackDownload('Hold_the_knight', 'WAV')">WAV</a>
+                <a href="assets/audio/Hold_the_knight.mp3" download="Hold_the_knight.mp3" class="dl-link" onclick="trackDownload('Hold_the_knight', 'MP3')">MP3</a>
             </div>
         </div>
     </section>
@@ -347,12 +350,7 @@
     <div class="grid">
         <div class="card">
             <p class="kicker">The Transmission</p>
-            <ul class="track-list">
-                <li class="track-item"><span>Pressure_on_me</span><span style="color: var(--primary)">Energy & Lift</span></li>
-                <li class="track-item"><span>Locked_in_the_starship</span><span style="color: var(--primary)">Story Lead</span></li>
-                <li class="track-item"><span>Hold_the_knight</span><span style="color: var(--primary)">Groove First</span></li>
-                <li class="track-item"><span>Moving_Different</span><span style="color: var(--primary)">Pure Movement</span></li>
-            </ul>
+            <p style="color: var(--muted); font-size: 0.95rem;">Retro-futuristic funk designed for late-night movement. Engineered cosmic soul with a mechanical heartbeat.</p>
         </div>
         <div class="card">
             <p class="kicker">Stats</p>
@@ -371,7 +369,7 @@
                 <span class="tag">Newest Release</span>
                 <img src="locked in album cover.jpg" alt="Locked in the Starship">
                 <h3>Locked in the Starship</h3>
-                <p style="color: var(--muted); font-size: 0.95rem;">Locked in the Starship picks up where Planet 24 leaves off, placing you inside a drifting vessel cut off from the system. Time slows, loops repeat, and movement becomes the only constant.</p>
+                <p style="color: var(--muted); font-size: 0.95rem;">Locked in the Starship picks up where Planet 24 leaves off, placing you inside a drifting vessel cut off from the system.</p>
             </div>
             <div class="album-card">
                 <span class="tag" style="background: rgba(255,255,255,0.1); color: var(--muted);">Catalogue</span>
@@ -388,6 +386,19 @@
 </div>
 
 <script>
+    // Vercel Custom Event Tracking
+    function trackDownload(songName, format) {
+        if (window.va) {
+            window.va('event', {
+                name: 'Song Download',
+                data: {
+                    song: songName,
+                    format: format
+                }
+            });
+        }
+    }
+
     function togglePlay(id, btn, containerId) {
         const audio = document.getElementById(id);
         const icon = btn.querySelector('i');
