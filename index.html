@@ -230,8 +230,8 @@
         }
 
         @media (max-width: 800px) {
-            .hero, .grid, .album-grid { grid-template-columns: 1fr; }
             header { flex-direction: column; gap: 1rem; text-align: center; }
+            .hero, .grid, .album-grid { grid-template-columns: 1fr; }
             .track-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
             .scrubber-container { width: 100%; }
             .track-thumb { display: none; }
@@ -347,7 +347,12 @@
     <div class="grid">
         <div class="card">
             <p class="kicker">The Transmission</p>
-            <p style="color: var(--muted); font-size: 0.95rem;">Retro-futuristic funk designed for late-night movement. Engineered cosmic soul with a mechanical heartbeat.</p>
+            <ul class="track-list">
+                <li class="track-item"><span>Pressure_on_me</span><span style="color: var(--primary)">Energy & Lift</span></li>
+                <li class="track-item"><span>Locked_in_the_starship</span><span style="color: var(--primary)">Story Lead</span></li>
+                <li class="track-item"><span>Hold_the_knight</span><span style="color: var(--primary)">Groove First</span></li>
+                <li class="track-item"><span>Moving_Different</span><span style="color: var(--primary)">Pure Movement</span></li>
+            </ul>
         </div>
         <div class="card">
             <p class="kicker">Stats</p>
