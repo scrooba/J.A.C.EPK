@@ -7,7 +7,13 @@
     <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700&f[]=satoshi@400,500&display=swap" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     
-    <script defer src="/_vercel/insights/script.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WM3E9GBZNL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WM3E9GBZNL');
+    </script>
 
     <style>
         :root {
@@ -54,6 +60,9 @@
             text-decoration: none; 
             font-weight: 700; 
             font-size: 0.85rem;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
         }
 
         .hero { 
@@ -172,9 +181,7 @@
 
         .social-btns {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;
         }
 
         .social-btn {
@@ -247,7 +254,7 @@
     <header>
         <div class="logo">J.A.C</div>
         <nav>
-            <a href="#radio-hub" class="nav-btn">Listen & Download</a>
+            <button onclick="scrollToRadio()" class="nav-btn">Listen & Download</button>
         </nav>
     </header>
 
@@ -266,7 +273,7 @@
         <img src="locked in album cover.jpg" alt="Locked in the Starship" class="main-cover">
     </section>
 
-    <section class="radio-panel" id="radio-hub">
+    <section class="radio-panel" id="radio-panel-top">
         <p class="kicker">Radio Hub</p>
         <h2>Listen</h2>
         <p style="color: var(--muted); margin-bottom: 2rem;">Preview tracks and download audio for airplay.</p>
@@ -286,8 +293,8 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Loop_of_you.wav" download="Loop_of_you.wav" class="dl-link" onclick="trackDownload('Loop_of_you', 'WAV')">WAV</a>
-                <a href="assets/audio/Loop_of_you.mp3" download="Loop_of_you.mp3" class="dl-link" onclick="trackDownload('Loop_of_you', 'MP3')">MP3</a>
+                <a href="assets/audio/Loop_of_you.wav" download="Loop_of_you.wav" class="dl-link" onclick="gtag('event', 'download', {'song': 'Loop_of_you', 'format': 'WAV'})">WAV</a>
+                <a href="assets/audio/Loop_of_you.mp3" download="Loop_of_you.mp3" class="dl-link" onclick="gtag('event', 'download', {'song': 'Loop_of_you', 'format': 'MP3'})">MP3</a>
             </div>
         </div>
 
@@ -305,7 +312,7 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Pressure_on_me.mp3" download="Pressure_on_me.mp3" class="dl-link" onclick="trackDownload('Pressure_on_me', 'MP3')">MP3</a>
+                <a href="assets/audio/Pressure_on_me.mp3" download="Pressure_on_me.mp3" class="dl-link" onclick="gtag('event', 'download', {'song': 'Pressure_on_me', 'format': 'MP3'})">MP3</a>
             </div>
         </div>
 
@@ -323,7 +330,7 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Moving_different.mp3" download="Moving_different.mp3" class="dl-link" onclick="trackDownload('Moving_different', 'MP3')">MP3</a>
+                <a href="assets/audio/Moving_different.mp3" download="Moving_different.mp3" class="dl-link" onclick="gtag('event', 'download', {'song': 'Moving_different', 'format': 'MP3'})">MP3</a>
             </div>
         </div>
 
@@ -341,8 +348,8 @@
                 </div>
             </div>
             <div class="dl-btns">
-                <a href="assets/audio/Hold_the_knight.wav" download="Hold_the_knight.wav" class="dl-link" onclick="trackDownload('Hold_the_knight', 'WAV')">WAV</a>
-                <a href="assets/audio/Hold_the_knight.mp3" download="Hold_the_knight.mp3" class="dl-link" onclick="trackDownload('Hold_the_knight', 'MP3')">MP3</a>
+                <a href="assets/audio/Hold_the_knight.wav" download="Hold_the_knight.wav" class="dl-link" onclick="gtag('event', 'download', {'song': 'Hold_the_knight', 'format': 'WAV'})">WAV</a>
+                <a href="assets/audio/Hold_the_knight.mp3" download="Hold_the_knight.mp3" class="dl-link" onclick="gtag('event', 'download', {'song': 'Hold_the_knight', 'format': 'MP3'})">MP3</a>
             </div>
         </div>
     </section>
@@ -369,7 +376,7 @@
                 <span class="tag">Newest Release</span>
                 <img src="locked in album cover.jpg" alt="Locked in the Starship">
                 <h3>Locked in the Starship</h3>
-                <p style="color: var(--muted); font-size: 0.95rem;">Locked in the Starship picks up where Planet 24 leaves off, placing you inside a drifting vessel cut off from the system.</p>
+                <p style="color: var(--muted); font-size: 0.95rem;">Locked in the Starship picks up where Planet 24 leaves off, placing you inside a drifting vessel cut off from the system. Time slows, loops repeat, and movement becomes the only constant.</p>
             </div>
             <div class="album-card">
                 <span class="tag" style="background: rgba(255,255,255,0.1); color: var(--muted);">Catalogue</span>
@@ -386,17 +393,17 @@
 </div>
 
 <script>
-    // Vercel Custom Event Tracking
-    function trackDownload(songName, format) {
-        if (window.va) {
-            window.va('event', {
-                name: 'Song Download',
-                data: {
-                    song: songName,
-                    format: format
-                }
-            });
-        }
+    // Clean scroll function - no URL hashtag
+    function scrollToRadio() {
+        const element = document.getElementById('radio-panel-top');
+        const headerOffset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
     }
 
     function togglePlay(id, btn, containerId) {
